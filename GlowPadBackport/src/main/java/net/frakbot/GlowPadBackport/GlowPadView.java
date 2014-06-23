@@ -74,6 +74,8 @@ public class GlowPadView extends View {
 
         public void onGrabbedStateChange(View v, int handle);
 
+        public void onTargetChanged(View v, int target);
+
         public void onFinishFinalAnimation();
     }
 
@@ -1012,7 +1014,12 @@ public class GlowPadView extends View {
                 }
             }
         }
-        mActiveTarget = activeTarget;
+        if (mActiveTarget != activeTarget) {
+            mActiveTarget = activeTarget;
+            if (mOnTriggerListener != null) {
+                mOnTriggerListener.onTargetChanged(this, activeTarget);
+            }
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
