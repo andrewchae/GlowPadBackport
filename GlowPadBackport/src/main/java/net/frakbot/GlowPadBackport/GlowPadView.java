@@ -97,7 +97,7 @@ public class GlowPadView extends View {
     private static final float RING_SCALE_EXPANDED = 1.0f;
     private static final float RING_SCALE_COLLAPSED = 0.5f;
 
-    private ArrayList<TargetDrawable> mTargetDrawables = new ArrayList<>();
+    private ArrayList<TargetDrawable> mTargetDrawables = new ArrayList<TargetDrawable>();
     private AnimationBundle mWaveAnimations = new AnimationBundle();
     private AnimationBundle mTargetAnimations = new AnimationBundle();
     private AnimationBundle mGlowAnimations = new AnimationBundle();
@@ -587,7 +587,7 @@ public class GlowPadView extends View {
         Resources res = getContext().getResources();
         TypedArray array = res.obtainTypedArray(resourceId);
         final int count = array.length();
-        ArrayList<TargetDrawable> drawables = new ArrayList<>(count);
+        ArrayList<TargetDrawable> drawables = new ArrayList<TargetDrawable>(count);
         for (int i = 0; i < count; i++) {
             TypedValue value = array.peekValue(i);
             TargetDrawable target = new TargetDrawable(res, value != null ? value.resourceId : 0);
@@ -1379,7 +1379,7 @@ public class GlowPadView extends View {
 
     private ArrayList<String> loadDescriptions(int resourceId) {
         if (resourceId == 0) {
-            return new ArrayList<>(0);
+            return new ArrayList<String>(0);
         }
 
         final Context context = getContext();
@@ -1390,7 +1390,7 @@ public class GlowPadView extends View {
         final int count;
         if (array != null) {
             count = array.length();
-            ArrayList<String> targetContentDescriptions = new ArrayList<>(count);
+            ArrayList<String> targetContentDescriptions = new ArrayList<String>(count);
             for (int i = 0; i < count; i++) {
                 String contentDescription = array.getString(i);
                 targetContentDescriptions.add(contentDescription);
@@ -1398,7 +1398,7 @@ public class GlowPadView extends View {
             array.recycle();
             return targetContentDescriptions;
         }
-        return new ArrayList<>(0);
+        return new ArrayList<String>(0);
     }
 
     public int getResourceIdForTarget(int index) {
